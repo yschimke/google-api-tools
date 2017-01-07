@@ -1,0 +1,14 @@
+#!/usr/bin/env okshell
+
+var apis = query("https://www.googleapis.com/discovery/v1/apis");
+
+apis.items.forEach(function(i) {
+//	print("fetching " + i.discoveryRestUrl);
+	try {
+		var docs = query(i.discoveryRestUrl);
+		print(docs.baseUrl + "\t" + i.discoveryRestUrl);
+	} catch (e) { 
+//		print(e.message); 
+	}
+});
+
